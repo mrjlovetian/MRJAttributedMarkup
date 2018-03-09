@@ -1,0 +1,6 @@
+framework module MRJAttributedMarkup {
+  umbrella header "MRJAttributedMarkup-umbrella.h"
+
+  export *
+  module * { export * }
+}

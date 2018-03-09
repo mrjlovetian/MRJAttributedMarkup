@@ -24,6 +24,7 @@
 		873B8AEB1B1F5CCA007FD442 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 873B8AEA1B1F5CCA007FD442 /* Main.storyboard */; };
 		B21CED1C77DC9249D9FFC6DA /* Pods_MRJAttributedMarkup_Tests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3DA8289D9CE865A697A29C89 /* Pods_MRJAttributedMarkup_Tests.framework */; };
 		E6F8A16436AAAF04A22A8AB7 /* Pods_MRJAttributedMarkup_Example.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 15C82EF449C6E0F79C2D28F5 /* Pods_MRJAttributedMarkup_Example.framework */; };
+		E77BFC5D20526736008FA50E /* thumbIcon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E77BFC5C20526735008FA50E /* thumbIcon@2x.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -37,7 +38,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		08EFA9139DDE3C6CA5211086 /* README.md */ = {isa = PBXFileReference; includeInIndex = 1; name = README.md; path = ../README.md; sourceTree = "<group>"; };
+		08EFA9139DDE3C6CA5211086 /* README.md */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = net.daringfireball.markdown; name = README.md; path = ../README.md; sourceTree = "<group>"; };
 		15C82EF449C6E0F79C2D28F5 /* Pods_MRJAttributedMarkup_Example.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MRJAttributedMarkup_Example.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		3DA8289D9CE865A697A29C89 /* Pods_MRJAttributedMarkup_Tests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MRJAttributedMarkup_Tests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		4518EE6D4A77C4C323270FAD /* Pods-MRJAttributedMarkup_Example.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MRJAttributedMarkup_Example.release.xcconfig"; path = "Pods/Target Support Files/Pods-MRJAttributedMarkup_Example/Pods-MRJAttributedMarkup_Example.release.xcconfig"; sourceTree = "<group>"; };
@@ -64,8 +65,9 @@
 		71719F9E1E33DC2100824A3D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		873B8AEA1B1F5CCA007FD442 /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = Main.storyboard; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		B2C614D5A907FF623120B2E9 /* Pods-MRJAttributedMarkup_Example.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MRJAttributedMarkup_Example.debug.xcconfig"; path = "Pods/Target Support Files/Pods-MRJAttributedMarkup_Example/Pods-MRJAttributedMarkup_Example.debug.xcconfig"; sourceTree = "<group>"; };
-		B5C5FC789464F345A35EF3AB /* MRJAttributedMarkup.podspec */ = {isa = PBXFileReference; includeInIndex = 1; name = MRJAttributedMarkup.podspec; path = ../MRJAttributedMarkup.podspec; sourceTree = "<group>"; };
-		EC3E7D0B0E82E151FC9398F6 /* LICENSE */ = {isa = PBXFileReference; includeInIndex = 1; name = LICENSE; path = ../LICENSE; sourceTree = "<group>"; };
+		B5C5FC789464F345A35EF3AB /* MRJAttributedMarkup.podspec */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; name = MRJAttributedMarkup.podspec; path = ../MRJAttributedMarkup.podspec; sourceTree = "<group>"; };
+		E77BFC5C20526735008FA50E /* thumbIcon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "thumbIcon@2x.png"; sourceTree = "<group>"; };
+		EC3E7D0B0E82E151FC9398F6 /* LICENSE */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; name = LICENSE; path = ../LICENSE; sourceTree = "<group>"; };
 		F7F90B10DEFAB4D5108A7319 /* Pods-MRJAttributedMarkup_Tests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MRJAttributedMarkup_Tests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-MRJAttributedMarkup_Tests/Pods-MRJAttributedMarkup_Tests.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -132,6 +134,7 @@
 		6003F593195388D20070C39A /* Example for MRJAttributedMarkup */ = {
 			isa = PBXGroup;
 			children = (
+				E77BFC5C20526735008FA50E /* thumbIcon@2x.png */,
 				6003F59C195388D20070C39A /* MRJAppDelegate.h */,
 				6003F59D195388D20070C39A /* MRJAppDelegate.m */,
 				873B8AEA1B1F5CCA007FD442 /* Main.storyboard */,
@@ -282,6 +285,7 @@
 				873B8AEB1B1F5CCA007FD442 /* Main.storyboard in Resources */,
 				71719F9F1E33DC2100824A3D /* LaunchScreen.storyboard in Resources */,
 				6003F5A9195388D20070C39A /* Images.xcassets in Resources */,
+				E77BFC5D20526736008FA50E /* thumbIcon@2x.png in Resources */,
 				6003F598195388D20070C39A /* InfoPlist.strings in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
