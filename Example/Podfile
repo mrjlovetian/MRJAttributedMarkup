@@ -1,0 +1,11 @@
+use_frameworks!
+
+target 'MRJAttributedMarkup_Example' do
+  pod 'MRJAttributedMarkup', :path => '../'
+
+  target 'MRJAttributedMarkup_Tests' do
+    inherit! :search_paths
+
+    
+  end
+end
