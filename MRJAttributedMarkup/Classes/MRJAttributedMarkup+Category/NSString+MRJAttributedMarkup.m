@@ -15,7 +15,7 @@ NSString *kMRJAttributedMarkupLinkName = @"MRJAttributedMarkupLinkName";
 @implementation NSString (MRJAttributedMarkup)
 
 - (NSAttributedString*)attributedStringWithStyleBook:(NSDictionary *)fontbook {
-    // Find string ranges
+    // 找到字符串范围
     NSMutableArray *tags = [[NSMutableArray alloc] initWithCapacity:1];
     NSMutableString *ms = [self mutableCopy];
     
@@ -26,7 +26,7 @@ NSString *kMRJAttributedMarkupLinkName = @"MRJAttributedMarkupLinkName";
     
     NSMutableAttributedString* as = [[NSMutableAttributedString alloc] initWithString:ms];
     
-    // Setup base attributes
+    // 设置基本属性
     [as setAttributes:@{NSUnderlineStyleAttributeName:[NSNumber numberWithInteger:NSUnderlineStyleNone]} range:NSMakeRange(0,[as length])];
     
     NSObject *bodyStyle = fontbook[@"body"];

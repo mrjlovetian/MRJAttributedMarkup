@@ -26,7 +26,7 @@
     BOOL isEndTag = [tag rangeOfString:@"</"].length == 2;
     
     if (isEndTag) {
-        // Find matching open tag
+        // 找到匹配的开放标签
         NSString *openTag = [tag stringByReplacingOccurrencesOfString:@"</" withString:@"<"];
         NSInteger count = array.count;
         for (NSInteger i = count - 1; i >= 0; i--) {

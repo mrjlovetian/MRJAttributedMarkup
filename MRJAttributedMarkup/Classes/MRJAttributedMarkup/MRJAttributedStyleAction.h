@@ -15,5 +15,4 @@
 + (NSArray *)styledActionWithAction:(void (^)())action;
 - (NSArray *)styledAction;
 
-
 @end

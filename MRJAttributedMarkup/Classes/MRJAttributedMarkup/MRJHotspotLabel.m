@@ -7,11 +7,9 @@
 
 #import "MRJHotspotLabel.h"
 #import "MRJAttributedStyleAction.h"
-
 #import <CoreText/CoreText.h>
 
 @implementation MRJHotspotLabel
-
 
 - (instancetype)initWithCoder:(NSCoder *)coder {
     self = [super initWithCoder:coder];
@@ -32,9 +30,9 @@
 - (void)addHotspotHandler {
     __weak MRJHotspotLabel *weakSelf = self;
     [self setOnTap:^(CGPoint pt) {
-        // Locate the text attributes at the touched position
+        // 找到触摸位置的文本属性
         NSDictionary* attributes = [weakSelf textAttributesAtPoint:pt];
-        // If the touched attributes contains our custom action style, execute the action block
+        // 如果所触及的属性包含我们的自定义操作风格，请执行操作块
         MRJAttributedStyleAction* actionStyle = attributes[@"MRJAttributedStyleAction"];
         if (actionStyle) {
             actionStyle.action();
@@ -43,20 +41,20 @@
 }
 
 - (NSDictionary *)textAttributesAtPoint:(CGPoint)pt {
-    // Locate the attributes of the text within the label at the specified point
+    // 在指定点处找到标签内文本的属性
     NSDictionary* dictionary = nil;
     
-    // First, create a CoreText framesetter
+    // 首先，创建一个coretext framesetter
     CTFramesetterRef framesetter = CTFramesetterCreateWithAttributedString((__bridge CFAttributedStringRef)self.attributedText);
     
     CGMutablePathRef framePath = CGPathCreateMutable();
     CGPathAddRect(framePath, NULL, CGRectMake(0, 0, self.frame.size.width, self.frame.size.height));
-    // Get the frame that will do the rendering.
+    // 获取将执行渲染的框架。
     CFRange currentRange = CFRangeMake(0, 0);
     CTFrameRef frameRef = CTFramesetterCreateFrame(framesetter, currentRange, framePath, NULL);
     CGPathRelease(framePath);
 
-    // Get each of the typeset lines
+    // 获取每个排版行
     NSArray *lines = (__bridge id)CTFrameGetLines(frameRef);
     
     CFIndex linesCount = [lines count];
@@ -66,7 +64,7 @@
     CTLineRef line = NULL;
     CGPoint lineOrigin = CGPointZero;
     
-    // Correct each of the typeset lines (which have origin (0,0)) to the correct orientation (typesetting offsets from the bottom of the frame)
+    // 将每个排版行（原点（0,0））修改为正确的方向（排版框架底部的偏移量）
     
     CGFloat bottom = self.frame.size.height;
     for(CFIndex i = 0; i < linesCount; ++i) {
@@ -74,11 +72,11 @@
         bottom = lineOrigins[i].y;
     }
     
-    // Offset the touch point by the amount of space between the top of the label frame and the text
+    // 用标签框顶部与文本之间的空间量偏移触摸点
     pt.y -= (self.frame.size.height - bottom)/2;
     
     
-    // Scan through each line to find the line containing the touch point y position
+    // 扫描每条线以找到包含触摸点y位置的线
     for(CFIndex i = 0; i < linesCount; ++i) {
         line = (__bridge CTLineRef)[lines objectAtIndex:i];
         lineOrigin = lineOrigins[i];
@@ -87,21 +85,21 @@
         
         if(pt.y < (floor(lineOrigin.y) + floor(descent))) {
             
-            // Cater for text alignment set in the label itself (not in the attributed string)
+            // 迎合在标签中设置的文本对齐方式（不在属性字符串中）
             if (self.textAlignment == NSTextAlignmentCenter) {
                 pt.x -= (self.frame.size.width - width)/2;
             } else if (self.textAlignment == NSTextAlignmentRight) {
                 pt.x -= (self.frame.size.width - width);
             }
             
-            // Offset the touch position by the actual typeset line origin. pt is now the correct touch position with the line bounds
+            // 用实际的排版线原点偏移触摸位置。pt现在是线边界的正确触摸位置
             pt.x -= lineOrigin.x;
             pt.y -= lineOrigin.y;
             
-            // Find the text index within this line for the touch position
+            // 在这一行中找到触摸位置的文本索引
             CFIndex i = CTLineGetStringIndexForPosition(line, pt);
             
-            // Iterate through each of the glyph runs to find the run containing the character index
+            // 遍历每个字形运行以查找包含字符索引的运行
             NSArray* glyphRuns = (__bridge id)CTLineGetGlyphRuns(line);
             CFIndex runCount = [glyphRuns count];
             for (CFIndex run=0; run<runCount; run++) {
