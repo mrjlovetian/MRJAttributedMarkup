@@ -1,5 +1,5 @@
 PODS:
-  - MRJAttributedMarkup (0.1.0)
+  - MRJAttributedMarkup (0.1.1)
 
 DEPENDENCIES:
   - MRJAttributedMarkup (from `../`)
@@ -9,7 +9,7 @@ EXTERNAL SOURCES:
     :path: ../
 
 SPEC CHECKSUMS:
-  MRJAttributedMarkup: de97158a31f0398b6e2e67b955ef5e00ef1b9c36
+  MRJAttributedMarkup: 7c56791659cf77192be72cadf718e04b01e14c32
 
 PODFILE CHECKSUM: 7e16da14449dfb22f9697964d29759a419152a4d
 

@@ -14,7 +14,6 @@
 #import "NSString+MRJAttributedMarkup.h"
 #import "MRJAttributedStyleAction.h"
 #import "MRJHotspotLabel.h"
-#import "MRJTappableLabel.h"
 
 FOUNDATION_EXPORT double MRJAttributedMarkupVersionNumber;
 FOUNDATION_EXPORT const unsigned char MRJAttributedMarkupVersionString[];

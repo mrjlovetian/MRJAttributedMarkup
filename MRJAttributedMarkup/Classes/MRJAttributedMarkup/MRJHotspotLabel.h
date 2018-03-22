@@ -5,8 +5,10 @@
 //  Copyright (c) 2018 mrjlovetian@gmail.com. All rights reserved.
 //
 
-#import "MRJTappableLabel.h"
+#import <UIKit/UIKit.h>
 
-@interface MRJHotspotLabel : MRJTappableLabel
+@interface MRJHotspotLabel : UILabel
+
+@property (nonatomic, readwrite, copy) void (^onTap) (CGPoint);
 
 @end
