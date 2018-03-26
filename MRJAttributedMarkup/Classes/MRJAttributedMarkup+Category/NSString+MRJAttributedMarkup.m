@@ -14,7 +14,7 @@ NSString *kMRJAttributedMarkupLinkName = @"MRJAttributedMarkupLinkName";
 
 @implementation NSString (MRJAttributedMarkup)
 
-- (NSAttributedString*)attributedStringWithStyleBook:(NSDictionary *)fontbook {
+- (NSAttributedString *)attributedStringWithStyleBook:(NSDictionary *)fontbook {
     // 找到字符串范围
     NSMutableArray *tags = [[NSMutableArray alloc] initWithCapacity:1];
     NSMutableString *ms = [self mutableCopy];
@@ -24,7 +24,7 @@ NSString *kMRJAttributedMarkupLinkName = @"MRJAttributedMarkupLinkName";
     
     [ms replaceAllTagsIntoArray:tags];
     
-    NSMutableAttributedString* as = [[NSMutableAttributedString alloc] initWithString:ms];
+    NSMutableAttributedString *as = [[NSMutableAttributedString alloc] initWithString:ms];
     
     // 设置基本属性
     [as setAttributes:@{NSUnderlineStyleAttributeName:[NSNumber numberWithInteger:NSUnderlineStyleNone]} range:NSMakeRange(0,[as length])];
@@ -40,7 +40,7 @@ NSString *kMRJAttributedMarkupLinkName = @"MRJAttributedMarkupLinkName";
         NSNumber *endloc = tag[@"endloc"];
         if (loc != nil && endloc != nil) {
             NSRange range = NSMakeRange([loc integerValue], [endloc integerValue] - [loc integerValue]);
-            NSObject* style = fontbook[t];
+            NSObject *style = fontbook[t];
             if (style) {
                 [self styleAttributedString:as range:range withStyle:style withStyleBook:fontbook];
             }
@@ -50,7 +50,7 @@ NSString *kMRJAttributedMarkupLinkName = @"MRJAttributedMarkupLinkName";
     return as;
 }
 
-- (void)styleAttributedString:(NSMutableAttributedString *)as range:(NSRange)range withStyle:(NSObject*)style withStyleBook:(NSDictionary*)styleBook {
+- (void)styleAttributedString:(NSMutableAttributedString *)as range:(NSRange)range withStyle:(NSObject *)style withStyleBook:(NSDictionary *)styleBook {
     if ([style isKindOfClass:[NSArray class]]) {
         for (NSObject* subStyle in (NSArray*)style) {
             [self styleAttributedString:as range:range withStyle:subStyle withStyleBook:styleBook];
@@ -83,12 +83,12 @@ NSString *kMRJAttributedMarkupLinkName = @"MRJAttributedMarkupLinkName";
     }
 }
 
--(void)setFont:(UIFont*)font range:(NSRange)range onAttributedString:(NSMutableAttributedString *)as {
+- (void)setFont:(UIFont*)font range:(NSRange)range onAttributedString:(NSMutableAttributedString *)as {
     [self setFontName:font.fontName size:font.pointSize range:range onAttributedString:as];
 }
 
 
--(void)setFontName:(NSString *)fontName size:(CGFloat)size range:(NSRange)range onAttributedString:(NSMutableAttributedString *)as {
+- (void)setFontName:(NSString *)fontName size:(CGFloat)size range:(NSRange)range onAttributedString:(NSMutableAttributedString *)as {
     // kCTFontAttributeName
     CTFontRef aFont = CTFontCreateWithName((__bridge CFStringRef)fontName, size, NULL);
     if (aFont) {

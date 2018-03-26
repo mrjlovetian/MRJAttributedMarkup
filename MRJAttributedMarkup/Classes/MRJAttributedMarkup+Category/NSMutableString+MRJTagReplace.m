@@ -14,7 +14,7 @@
     if (openTagRange.length == 0) {
         return NO;
     }
-    NSRange closeTagRange = [self rangeOfString:@">" options:NSCaseInsensitiveSearch range:NSMakeRange(openTagRange.location+openTagRange.length, self.length - (openTagRange.location+openTagRange.length))];
+    NSRange closeTagRange = [self rangeOfString:@">" options:NSCaseInsensitiveSearch range:NSMakeRange(openTagRange.location + openTagRange.length, self.length - (openTagRange.location+openTagRange.length))];
     if (closeTagRange.length == 0) {
         return NO;
     }
