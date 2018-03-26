@@ -7,12 +7,14 @@
 
 #import <Foundation/Foundation.h>
 
+typedef void(^ActionBlock)(void);
+
 @interface MRJAttributedStyleAction : NSObject
 
-@property (readwrite, copy) void (^action) ();
+@property (readwrite, copy) ActionBlock action;
 
-- (instancetype)initWithAction:(void (^)())action;
-+ (NSArray *)styledActionWithAction:(void (^)())action;
+- (instancetype)initWithAction:(ActionBlock)action;
++ (NSArray *)styledActionWithAction:(ActionBlock)action;
 - (NSArray *)styledAction;
 
 @end

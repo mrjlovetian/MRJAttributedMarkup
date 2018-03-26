@@ -31,7 +31,7 @@
     __weak MRJHotspotLabel *weakSelf = self;
     [self setOnTap:^(CGPoint pt) {
         // 找到触摸位置的文本属性
-        NSDictionary* attributes = [weakSelf textAttributesAtPoint:pt];
+        NSDictionary *attributes = [weakSelf textAttributesAtPoint:pt];
         // 如果所触及的属性包含我们的自定义操作风格，请执行操作块
         MRJAttributedStyleAction* actionStyle = attributes[@"MRJAttributedStyleAction"];
         if (actionStyle) {
@@ -42,7 +42,7 @@
 
 - (NSDictionary *)textAttributesAtPoint:(CGPoint)pt {
     // 在指定点处找到标签内文本的属性
-    NSDictionary* dictionary = nil;
+    NSDictionary *dictionary = nil;
     
     // 首先，创建一个coretext framesetter
     CTFramesetterRef framesetter = CTFramesetterCreateWithAttributedString((__bridge CFAttributedStringRef)self.attributedText);
@@ -67,7 +67,7 @@
     // 将每个排版行（原点（0,0））修改为正确的方向（排版框架底部的偏移量）
     
     CGFloat bottom = self.frame.size.height;
-    for(CFIndex i = 0; i < linesCount; ++i) {
+    for (CFIndex i = 0; i < linesCount; ++i) {
         lineOrigins[i].y = self.frame.size.height - lineOrigins[i].y;
         bottom = lineOrigins[i].y;
     }
@@ -77,7 +77,7 @@
     
     
     // 扫描每条线以找到包含触摸点y位置的线
-    for(CFIndex i = 0; i < linesCount; ++i) {
+    for (CFIndex i = 0; i < linesCount; ++i) {
         line = (__bridge CTLineRef)[lines objectAtIndex:i];
         lineOrigin = lineOrigins[i];
         CGFloat descent, ascent;
@@ -124,7 +124,7 @@
 
 #pragma mark Set
 
-- (void)setOnTap:(void (^)(CGPoint))onTap {
+- (void)setOnTap:(OnTapBlock)onTap {
     _onTap = onTap;
     UITapGestureRecognizer *tapGesture = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(tapped:)];
     [self addGestureRecognizer:tapGesture];

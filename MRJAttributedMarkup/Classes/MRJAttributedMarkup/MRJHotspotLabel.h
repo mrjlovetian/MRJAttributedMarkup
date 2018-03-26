@@ -7,8 +7,10 @@
 
 #import <UIKit/UIKit.h>
 
+typedef void(^OnTapBlock)(CGPoint);
+
 @interface MRJHotspotLabel : UILabel
 
-@property (nonatomic, readwrite, copy) void (^onTap) (CGPoint);
+@property (nonatomic, readwrite, copy) OnTapBlock onTap;
 
 @end

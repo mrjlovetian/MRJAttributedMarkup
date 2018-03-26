@@ -11,7 +11,7 @@ NSString *kMRJAttributedStyleAction = @"MRJAttributedStyleAction";
 
 @implementation MRJAttributedStyleAction
 
-- (instancetype)initWithAction:(void (^)())action {
+- (instancetype)initWithAction:(ActionBlock)action {
     self = [super init];
     if (self) {
         self.action = action;
@@ -19,13 +19,13 @@ NSString *kMRJAttributedStyleAction = @"MRJAttributedStyleAction";
     return self;
 }
 
-+ (NSArray *)styledActionWithAction:(void (^)())action {
-    MRJAttributedStyleAction* container = [[MRJAttributedStyleAction alloc] initWithAction:action];
++ (NSArray *)styledActionWithAction:(ActionBlock)action {
+    MRJAttributedStyleAction *container = [[MRJAttributedStyleAction alloc] initWithAction:action];
     return [container styledAction];
 }
 
 - (NSArray *)styledAction {
-    return @[ @{kMRJAttributedStyleAction:self}, @"link"];
+    return @[@{kMRJAttributedStyleAction:self}, @"link"];
 }
 
 @end
