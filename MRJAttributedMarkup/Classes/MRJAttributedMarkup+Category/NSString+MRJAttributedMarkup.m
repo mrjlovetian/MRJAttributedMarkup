@@ -52,25 +52,25 @@ NSString *kMRJAttributedMarkupLinkName = @"MRJAttributedMarkupLinkName";
 
 - (void)styleAttributedString:(NSMutableAttributedString *)as range:(NSRange)range withStyle:(NSObject *)style withStyleBook:(NSDictionary *)styleBook {
     if ([style isKindOfClass:[NSArray class]]) {
-        for (NSObject* subStyle in (NSArray*)style) {
+        for (NSObject *subStyle in (NSArray *)style) {
             [self styleAttributedString:as range:range withStyle:subStyle withStyleBook:styleBook];
         }
     }
     else if ([style isKindOfClass:[NSDictionary class]]) {
-        [self setStyle:(NSDictionary*)style range:range onAttributedString:as];
+        [self setStyle:(NSDictionary *)style range:range onAttributedString:as];
     }
     else if ([style isKindOfClass:[UIFont class]]) {
-        [self setFont:(UIFont*)style range:range onAttributedString:as];
+        [self setFont:(UIFont *)style range:range onAttributedString:as];
     }
     else if ([style isKindOfClass:[UIColor class]]) {
-        [self setTextColor:(UIColor*)style range:range onAttributedString:as];
+        [self setTextColor:(UIColor *)style range:range onAttributedString:as];
     } else if ([style isKindOfClass:[NSURL class]]) {
-        [self setLink:(NSURL*)style range:range onAttributedString:as];
+        [self setLink:(NSURL *)style range:range onAttributedString:as];
     } else if ([style isKindOfClass:[NSString class]]) {
-        [self styleAttributedString:as range:range withStyle:styleBook[(NSString*)style] withStyleBook:styleBook];
+        [self styleAttributedString:as range:range withStyle:styleBook[(NSString *)style] withStyleBook:styleBook];
     } else if ([style isKindOfClass:[UIImage class]]) {
-        NSTextAttachment* attachment = [[NSTextAttachment alloc] init];
-        attachment.image = (UIImage*)style;
+        NSTextAttachment *attachment = [[NSTextAttachment alloc] init];
+        attachment.image = (UIImage *)style;
         [as replaceCharactersInRange:range withAttributedString:[NSAttributedString attributedStringWithAttachment:attachment]];
 //        [as insertAttributedString:imageAttrString atIndex:range.location];
     }
@@ -78,12 +78,12 @@ NSString *kMRJAttributedMarkupLinkName = @"MRJAttributedMarkupLinkName";
 
 
 - (void)setStyle:(NSDictionary *)style range:(NSRange)range onAttributedString:(NSMutableAttributedString *)as {
-    for (NSString* key in [style allKeys]) {
+    for (NSString *key in [style allKeys]) {
         [self setTextStyle:key withValue:style[key] range:range onAttributedString:as];
     }
 }
 
-- (void)setFont:(UIFont*)font range:(NSRange)range onAttributedString:(NSMutableAttributedString *)as {
+- (void)setFont:(UIFont *)font range:(NSRange)range onAttributedString:(NSMutableAttributedString *)as {
     [self setFontName:font.fontName size:font.pointSize range:range onAttributedString:as];
 }
 
@@ -92,8 +92,8 @@ NSString *kMRJAttributedMarkupLinkName = @"MRJAttributedMarkupLinkName";
     // kCTFontAttributeName
     CTFontRef aFont = CTFontCreateWithName((__bridge CFStringRef)fontName, size, NULL);
     if (aFont) {
-        [as removeAttribute:(__bridge NSString*)kCTFontAttributeName range:range]; // Work around for Apple leak
-        [as addAttribute:(__bridge NSString*)kCTFontAttributeName value:(__bridge id)aFont range:range];
+        [as removeAttribute:(__bridge NSString *)kCTFontAttributeName range:range]; // Work around for Apple leak
+        [as addAttribute:(__bridge NSString *)kCTFontAttributeName value:(__bridge id)aFont range:range];
         CFRelease(aFont);
     }
 }
