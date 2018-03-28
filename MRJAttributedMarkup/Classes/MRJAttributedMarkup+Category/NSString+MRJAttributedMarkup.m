@@ -76,7 +76,6 @@ NSString *kMRJAttributedMarkupLinkName = @"MRJAttributedMarkupLinkName";
     }
 }
 
-
 - (void)setStyle:(NSDictionary *)style range:(NSRange)range onAttributedString:(NSMutableAttributedString *)as {
     for (NSString *key in [style allKeys]) {
         [self setTextStyle:key withValue:style[key] range:range onAttributedString:as];
@@ -86,7 +85,6 @@ NSString *kMRJAttributedMarkupLinkName = @"MRJAttributedMarkupLinkName";
 - (void)setFont:(UIFont *)font range:(NSRange)range onAttributedString:(NSMutableAttributedString *)as {
     [self setFontName:font.fontName size:font.pointSize range:range onAttributedString:as];
 }
-
 
 - (void)setFontName:(NSString *)fontName size:(CGFloat)size range:(NSRange)range onAttributedString:(NSMutableAttributedString *)as {
     // kCTFontAttributeName

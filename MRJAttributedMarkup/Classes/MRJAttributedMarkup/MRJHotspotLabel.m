@@ -58,7 +58,7 @@
     NSArray *lines = (__bridge id)CTFrameGetLines(frameRef);
     
     CFIndex linesCount = [lines count];
-    CGPoint *lineOrigins = (CGPoint *) malloc(sizeof(CGPoint) * linesCount);
+    CGPoint *lineOrigins = (CGPoint *) malloc(sizeof(CGPoint) *linesCount);
     CTFrameGetLineOrigins(frameRef, CFRangeMake(0, linesCount), lineOrigins);
     
     CTLineRef line = NULL;
@@ -67,7 +67,7 @@
     // 将每个排版行（原点（0,0））修改为正确的方向（排版框架底部的偏移量）
     
     CGFloat bottom = self.frame.size.height;
-    for (CFIndex i = 0; i < linesCount; ++i) {
+    for (CFIndex i = 0; i < linesCount; i++) {
         lineOrigins[i].y = self.frame.size.height - lineOrigins[i].y;
         bottom = lineOrigins[i].y;
     }
@@ -75,9 +75,8 @@
     // 用标签框顶部与文本之间的空间量偏移触摸点
     pt.y -= (self.frame.size.height - bottom)/2;
     
-    
     // 扫描每条线以找到包含触摸点y位置的线
-    for (CFIndex i = 0; i < linesCount; ++i) {
+    for (CFIndex i = 0; i < linesCount; i++) {
         line = (__bridge CTLineRef)[lines objectAtIndex:i];
         lineOrigin = lineOrigins[i];
         CGFloat descent, ascent;
@@ -100,9 +99,9 @@
             CFIndex i = CTLineGetStringIndexForPosition(line, pt);
             
             // 遍历每个字形运行以查找包含字符索引的运行
-            NSArray* glyphRuns = (__bridge id)CTLineGetGlyphRuns(line);
+            NSArray *glyphRuns = (__bridge id)CTLineGetGlyphRuns(line);
             CFIndex runCount = [glyphRuns count];
-            for (CFIndex run=0; run<runCount; run++) {
+            for (CFIndex run = 0; run < runCount; run ++) {
                 CTRunRef glyphRun = (__bridge CTRunRef)[glyphRuns objectAtIndex:run];
                 CFRange range = CTRunGetStringRange(glyphRun);
                 if (i >= range.location && i<= range.location+range.length) {
