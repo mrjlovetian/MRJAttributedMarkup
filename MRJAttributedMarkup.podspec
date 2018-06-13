@@ -8,7 +8,7 @@
 
 Pod::Spec.new do |s|
   s.name             = 'MRJAttributedMarkup'
-  s.version          = '0.1.3.3'
+  s.version          = '0.1.3.4'
   s.summary          = '文字多样式标签.'
 
 # This description is used to generate tags and improve search results.
